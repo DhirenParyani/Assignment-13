@@ -69,7 +69,7 @@ class ProductForm extends Component {
 						<label className="form-check-label">Out Of Stock</label>
 					</div>
 				
-				<input type="sumit" className="btn btn-primary mr-2" value="Save"></input>
+				<input type="submit" className="btn btn-primary mr-2" value="Save"></input>
 				<input type="reset" onClick={this.handleReset} className="btn btn-danger" value="Clear"></input>
 			</form>
 		)
