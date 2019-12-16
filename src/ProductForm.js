@@ -39,37 +39,37 @@ class ProductForm extends Component {
 	}
 
 	render() {
-		const { product } = this.state;
+	
 		return (
 			<form onSubmit={this.handleSave}>
-				<h4>{ ((product.productid != null) ? "Edit the existing product" : "Add a new product") }</h4>
+				<h4>Add a new product</h4>
 				<p>
 					<label>Name <br />
-						<input type="text" className="form-control" name="name" onChange={this.handleChange} value={product.name} required />
+						<input type="text" className="form-control" name="name" onChange={this.handleChange} value={this.state.product.name}  />
 					</label>
 				</p>
 				<p>
 					<label>Category <br />
-						<input type="text" className="form-control" name="category" onChange={this.handleChange} value={product.category} required />
+						<input type="text" className="form-control" name="category" onChange={this.handleChange} value={this.state.product.category}  />
 					</label>
 				</p>
 				<p>
 					<label>Price <br />
-						<input type="number" className="form-control" name="price" onChange={this.handleChange} value={product.price} required />
+						<input type="number" className="form-control" name="price" onChange={this.handleChange} value={this.state.product.price}  />
 					</label>
 				</p>
-				<label className="d-block mb-3">
+				
 					In stock <br />
-					<div className="form-check form-check-inline">
-						<input className="form-check-input" type="radio" name="instock" id="yes" onChange={this.handleChange} value="true" checked={(product.instock === true)} required />
-						<label className="form-check-label" htmlFor="yes">Yes</label>
+					<div className="form-check">
+						<input className="form-check-input" type="radio" name="instock" id="yes" onChange={this.handleChange} value="true" checked={(this.state.product.instock === true)}  />
+						<label className="form-check-label">In Stock</label>
 					</div>
-					<div className="form-check form-check-inline">
-						<input className="form-check-input" type="radio" name="instock" id="no" onChange={this.handleChange} value="false" checked={(product.instock === false)} required />
-						<label className="form-check-label" htmlFor="no">No</label>
+					<div className="form-check">
+						<input className="form-check-input" type="radio" name="instock" id="no" onChange={this.handleChange} value="false" checked={(this.state.product.instock === false)}  />
+						<label className="form-check-label">Out Of Stock</label>
 					</div>
-				</label>
-				<input type="submit" className="btn btn-info mr-2" value="Save"></input>
+				
+				<input type="sumit" className="btn btn-primary mr-2" value="Save"></input>
 				<input type="reset" onClick={this.handleReset} className="btn btn-danger" value="Clear"></input>
 			</form>
 		)

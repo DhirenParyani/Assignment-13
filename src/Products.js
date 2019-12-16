@@ -5,7 +5,7 @@ import ProductForm from './ProductForm'
 
 let PRODUCTS = [];
 
-const base = "";
+
 
 class Products extends Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class Products extends Component {
 	componentDidMount() { this.getProducts() }
 
 	getProducts() {
-		fetch(base + "/products/get")
+		fetch( "/products/get")
 		.then((res) => res.json())
 		.then((res) => {
 			if (res.success === 0) 
@@ -41,7 +41,7 @@ class Products extends Component {
 		if (product.productid != null) {
 			
 
-			fetch(base + "/products/update/" + product.productid, {
+			fetch("/products/update/" + product.productid, {
 				body: JSON.stringify(product),
 				method: "POST",
 				headers: {'Content-Type': 'application/json'}
@@ -54,9 +54,9 @@ class Products extends Component {
 			})
 			.catch(err => console.error(err))
 		} else {
-			// Create Product
+			
 
-			fetch(base + "/products/create", {
+			fetch("/products/create", {
 				body: JSON.stringify(product),
 				method: "POST",
 				headers: {'Content-Type': 'application/json'}
@@ -79,7 +79,7 @@ class Products extends Component {
 	}
 
     handleDestroy(productId) {
-		fetch(base + "/products/delete/" + productId)
+		fetch("/products/delete/" + productId)
 		.then((res) => res.json())
 		.then((res) => {
 			if (res.success === 0) 
@@ -94,15 +94,16 @@ class Products extends Component {
                 <h1>My Inventory</h1>
                 <Filters 
                     onFilter={this.handleFilter}></Filters>
-                <ProductTable 
+				<ProductTable 
+					filterText={this.state.filterText}
                     products={this.state.products}
-                    filterText={this.state.filterText}
+					onDestroy={this.handleDestroy}
                     onEdit={this.handleEdit}
-                    onDestroy={this.handleDestroy}></ProductTable>
+                   ></ProductTable>
                 <ProductForm
 					key={JSON.stringify(this.state.currProduct)}
-					product={this.state.currProduct}
-                    onSave={this.handleSave}></ProductForm>
+					onSave={this.handleSave}
+					product={this.state.currProduct}></ProductForm>
             </div>
         )
     }

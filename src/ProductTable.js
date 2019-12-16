@@ -17,19 +17,16 @@ class ProductTable extends Component {
     }
     
     render () {
-        let productsArray = this.props.products;
+        let productsArr = this.props.products;
         let rows = []
 
-        productsArray.forEach((product) => {
+        productsArr.forEach((product) => {
             if (product.product.name.indexOf(this.props.filterText) === -1) {
                 return
             }
             rows.push (
                 <ProductRow 
-                    product={product} 
-                    key={product.id} 
-                    onEdit={this.handleEdit}
-                    onDestroy={this.handleDestroy}></ProductRow>
+                    product={product} key={product.id} onEdit={this.handleEdit} onDestroy={this.handleDestroy}></ProductRow>
             )
         })
 

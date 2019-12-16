@@ -24,7 +24,7 @@ class ProductRow extends Component {
 				<td>{product.price}</td>
 				<td>{(product.instock) ? "Yes" : "No"}</td>
 				<td className="text-right">
-					<button onClick={this.edit} className="btn btn-primary mr-2">Edit</button>
+					<button onClick={this.edit} className="btn btn-primary">Modify</button>
 					<button onClick={this.destroy} className="btn btn-danger">Delete</button>
 				</td>
 			</tr>
